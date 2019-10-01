@@ -197,56 +197,56 @@ input.txt包含数字1~100，每个数字占一行，作为测试用输入文件
 
 1. selpg -s1 -e1 input_file
 
-![](assert/test1.JPG)
+![](assets/test1.JPG)
 
 2. selpg -s1 -e1 < input_file
 
-![](assert/test2.JPG)
+![](assets/test2.JPG)
 
 3. other_command | selpg -s10 -e20
 
-![](assert/test3.JPG)
+![](assets/test3.JPG)
 
 4. selpg -s10 -e20 input_file >output_file
 
-![](assert/test4.JPG)
+![](assets/test4.JPG)
 
 5. selpg -s10 -e20 input_file 2>error_file
 
-![](assert/test5.JPG)
+![](assets/test5.JPG)
 
 6. selpg -s10 -e20 input_file >output_file 2>error_file
 
-![](assert/test6.JPG)
+![](assets/test6.JPG)
 
 7. selpg -s10 -e20 input_file >output_file 2>/dev/null
 
-![](assert/test7.JPG)
+![](assets/test7.JPG)
 
 8. selpg -s10 -e20 input_file >/dev/null
 
-![](assert/test8.JPG)
+![](assets/test8.JPG)
 
 9. selpg -s10 -e20 input_file | other_command
 
-![](assert/test9.JPG)
+![](assets/test9.JPG)
 
 10. selpg -s10 -e20 input_file 2>error_file | other_command
 
-![](assert/test10.JPG)
+![](assets/test10.JPG)
 
 11. selpg -s10 -e20 -l66 input_file
 
-![](assert/test11.JPG)
+![](assets/test11.JPG)
 
 12. selpg -s10 -e20 -f input_file
 
-![](assert/test12.JPG)
+![](assets/test12.JPG)
 
 13. selpg -s10 -e20 -dlp1 input_file
 
-![](assert/test13.JPG)
+![](assets/test13.JPG)
 
 14. selpg -s10 -e20 input_file > output_file 2>error_file &
 
-![](assert/test14.JPG)
+![](assets/test14.JPG)
