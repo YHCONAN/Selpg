@@ -48,7 +48,7 @@ func main() {
 ```
 
 #### process_args
-在process_args函数中主要逻辑分为两部分：获取参数和参数合法性检查。对于获取参数部分调用了get_args函数，利用flag包绑定selpg中的各个参数。其中page_len的默认值按照实验要求应该设为72，但为了方便后续测试而将其设为7。值得注意的是对于in_filename参数需要做特殊处理，因为该参数属于non-flags参数，需要主动到flag的args列表中查找。
+在process_args函数中主要逻辑分为两部分：获取参数和参数合法性检查。对于获取参数部分调用了get_args函数，利用pflag包绑定selpg中的各个参数。其中page_len的默认值按照实验要求应该设为72，但为了方便后续测试而将其设为7。值得注意的是对于in_filename参数需要做特殊处理，因为该参数属于non-flags参数，需要主动到pflag的args列表中查找。
 ```go
 func get_args(selpg *Selpg) { //获取参数
 	if selpg == nil { //selpg为空
@@ -57,17 +57,17 @@ func get_args(selpg *Selpg) { //获取参数
 	}
 
 	//绑定参数
-	flag.IntVar(&selpg.start_page, "s", -1, "Start Page")
-	flag.IntVar(&selpg.end_page, "e", -1, "End Page")
-	flag.IntVar(&selpg.page_len, "l", 7, "Lines Per Page") //便于测试
-	//flag.IntVar(&selpg.page_len, "l", 72, "Lines Per Page")
-	flag.BoolVar(&selpg.page_type, "f", false, "Delimited By Form Feeds")
-	flag.StringVar(&selpg.print_dest, "d", "", "Specify The Printer")
-	flag.Parse()
+	pflag.IntVarP(&selpg.start_page, "start_page", "s", -1, "Start Page")
+	pflag.IntVarP(&selpg.end_page, "end_page", "e", -1, "End Page")
+	pflag.IntVarP(&selpg.page_len, "page_len", "l", 7, "Lines Per Page") //便于测试
+	//pflag.IntVarP(&selpg.page_len, "page_len", "l", 72, "Lines Per Page")
+	pflag.BoolVarP(&selpg.page_type, "page_type", "f", false, "Delimited By Form Feeds")
+	pflag.StringVarP(&selpg.print_dest, "print_dest", "d", "", "Specify The Printer")
+	pflag.Parse()
 
 	//处理non-flag参数，若存在则为输入文件名
-	if len(flag.Args()) > 0 {
-		selpg.in_filename = flag.Args()[0]
+	if pflag.NArg() > 0 {
+		selpg.in_filename = pflag.Args()[0]
 	} else {
 		selpg.in_filename = ""
 	}
